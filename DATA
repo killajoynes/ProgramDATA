@@ -1,0 +1,32 @@
+ for x in items2.indices {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(x)) {
+                self.passThroughPublisher2.send(items2[x])
+                
+//                if x == 3 {
+//                    self.passThroughPublisher2.send(completion: .failure(URLError.init(.cannotFindHost)))
+//                }
+                
+                if x > 3 && x < 8 {
+                    self.boolThroughPublisher.send(true)
+                    self.passThroughPublisher3.send(282)
+                } else {
+                    self.boolThroughPublisher.send(false)
+                }
+
+                if x == items2.indices.last {
+                    self.passThroughPublisher2.send(completion: .finished)
+                }
+            }
+        }
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//            self.passThroughPublisher2.send(1)
+//        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+//            self.passThroughPublisher2.send(2)
+//        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//            self.passThroughPublisher2.send(3)
+//        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+//            self.passThroughPublisher2.send(4)
